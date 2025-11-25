@@ -29,3 +29,16 @@ function setupGame() {
 }
 // Base card values (each value appears twice to make a pair)
 const baseCardValues = ["A", "A", "B", "B", "C", "C", "D", "D"];
+// Shuffle an array by swapping random items
+function shuffleArray(array) {
+    for (let i = 0; i < array.length; i++) {
+        const randomIndex = Math.floor(Math.random() * array.length);
+
+        // swap values using a temporary variable
+        const temp = array[i];
+        array[i] = array[randomIndex];
+        array[randomIndex] = temp;
+    }
+
+    return array;
+}
