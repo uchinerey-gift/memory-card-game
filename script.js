@@ -42,3 +42,23 @@ function shuffleArray(array) {
 
     return array;
 }
+// Start or restart the game
+function setupGame() {
+    // reset game state
+    moves = 0;
+    matchesFound = 0;
+    firstCard = null;
+    secondCard = null;
+    isBoardLocked = false;
+
+    // copy and shuffle card values
+    cards = baseCardValues.slice(); // make a copy
+    shuffleArray(cards);
+
+    // update moves on the page
+    if (movesDisplay) {
+        movesDisplay.textContent = moves;
+    }
+
+    console.log("Shuffled cards:", cards);
+}
