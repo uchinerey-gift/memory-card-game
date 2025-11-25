@@ -23,3 +23,7 @@ let matchesFound = 0;
 // Timer variables
 let startTime = null;
 let timerId = null;    
+// Start or restart the game
+function setupGame() {
+    console.log("Game is starting...");
+}
