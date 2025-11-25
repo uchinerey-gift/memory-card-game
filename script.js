@@ -64,3 +64,11 @@ function setupGame() {
 }
 // Start the first game automatically
 setupGame();
+// Create a single card element for a given value
+function createCardElement(cardValue) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.textContent = "?"; // we will change this later when flipped
+    card.dataset.value = cardValue; // store the real value on the element
+    return card;
+}
