@@ -72,3 +72,21 @@ function createCardElement(cardValue) {
     card.dataset.value = cardValue; // store the real value on the element
     return card;
 }
+// update moves on the page
+if (movesDisplay) {
+    movesDisplay.textContent = moves;
+}
+
+// clear the board
+if (gameBoard) {
+    gameBoard.innerHTML = "";
+
+    // create and add a card for each value
+    for (let i = 0; i < cards.length; i++) {
+        const cardElement = createCardElement(cards[i]);
+        gameBoard.appendChild(cardElement);
+    }
+}
+
+console.log("Shuffled cards:", cards);
+}
