@@ -27,3 +27,5 @@ let timerId = null;
 function setupGame() {
     console.log("Game is starting...");
 }
+// Base card values (each value appears twice to make a pair)
+const baseCardValues = ["A", "A", "B", "B", "C", "C", "D", "D"];
