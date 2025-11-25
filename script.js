@@ -62,3 +62,5 @@ function setupGame() {
 
     console.log("Shuffled cards:", cards);
 }
+// Start the first game automatically
+setupGame();
