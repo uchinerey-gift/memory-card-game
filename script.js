@@ -6,3 +6,10 @@
 // I will also track the number of moves and use a timer to show how long the game takes. 
 // My JavaScript will include functions for setting up the game, handling clicks, checking matches,
 // updating the moves, and restarting the game.
+
+
+// Select main elements from the page
+const gameBoard = document.getElementById("game-board");
+const movesDisplay = document.getElementById("moves");
+const timerDisplay = document.getElementById("timer");
+const newGameButton = document.getElementById("new-game");
