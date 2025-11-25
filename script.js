@@ -20,3 +20,6 @@ let secondCard = null; // second flipped card
 let isBoardLocked = false;
 let moves = 0;
 let matchesFound = 0;
+// Timer variables
+let startTime = null;
+let timerId = null;    
