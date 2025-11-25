@@ -13,3 +13,10 @@ const gameBoard = document.getElementById("game-board");
 const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
 const newGameButton = document.getElementById("new-game");
+// Game state variables
+let cards = [];        // array of card values
+let firstCard = null;  // first flipped card
+let secondCard = null; // second flipped card
+let isBoardLocked = false;
+let moves = 0;
+let matchesFound = 0;
