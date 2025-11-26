@@ -66,10 +66,6 @@ function setupGame() {
     secondCard = null;
     isBoardLocked = false;
 
-    // Handle when a card is clicked
-    function handleCardClick(card) {
-        console.log("Card clicked with value:", card.dataset.value);
-    }
     // copy and shuffle card values
     cards = baseCardValues.slice(); // make a copy of the base values
     shuffleArray(cards);            // shuffle them
@@ -91,6 +87,23 @@ function setupGame() {
 
     console.log("Shuffled cards:", cards);
 }
+// Handle when a card is clicked
+function handleCardClick(card) {
+    console.log("Card clicked with value:", card.dataset.value);
+}
+// if the board is locked, ignore clicks for now
+if (isBoardLocked) {
+    return;
+}
+
+// if this card is already flipped, do nothing
+if (card.classList.contains("flipped")) {
+    return;
+}
+
+// flip the card: show its value and add the "flipped" class
+card.textContent = card.dataset.value;
+card.classList.add("flipped");
 
 // Start the first game automatically
 setupGame();
