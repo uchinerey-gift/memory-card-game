@@ -48,6 +48,12 @@ function createCardElement(cardValue) {
     card.classList.add("card");
     card.textContent = "?"; // we will change this later when flipped
     card.dataset.value = cardValue; // store the real value on the element
+
+    // when the card is clicked, handle the click
+    card.addEventListener("click", function () {
+        handleCardClick(card);
+    });
+
     return card;
 }
 
@@ -60,6 +66,10 @@ function setupGame() {
     secondCard = null;
     isBoardLocked = false;
 
+    // Handle when a card is clicked
+    function handleCardClick(card) {
+        console.log("Card clicked with value:", card.dataset.value);
+    }
     // copy and shuffle card values
     cards = baseCardValues.slice(); // make a copy of the base values
     shuffleArray(cards);            // shuffle them
