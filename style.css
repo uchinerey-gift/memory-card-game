@@ -3,3 +3,11 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
+/* Game board layout */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
