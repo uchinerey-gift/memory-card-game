@@ -87,23 +87,36 @@ function setupGame() {
 
     console.log("Shuffled cards:", cards);
 }
+
 // Handle when a card is clicked
 function handleCardClick(card) {
-    console.log("Card clicked with value:", card.dataset.value);
-}
-// if the board is locked, ignore clicks for now
-if (isBoardLocked) {
-    return;
-}
+    // if the board is locked, ignore clicks
+    if (isBoardLocked) {
+        return;
+    }
 
-// if this card is already flipped, do nothing
-if (card.classList.contains("flipped")) {
-    return;
+    // if this card is already flipped, do nothing
+    if (card.classList.contains("flipped")) {
+        return;
+    }
+
+    // flip the card: show its value and add the "flipped" class
+    card.textContent = card.dataset.value;
+    card.classList.add("flipped");
+
+    // if this is the first card chosen, store it and stop here
+    if (firstCard === null) {
+        firstCard = card;
+        return;
+    }
+
+    // if we already had a first card, this must be the second
+    secondCard = card;
+
+    // for now, just log the pair we picked
+    console.log("First card:", firstCard.dataset.value, "Second card:", secondCard.dataset.value);
+
+    // (match checking will come in the next commit)
 }
-
-// flip the card: show its value and add the "flipped" class
-card.textContent = card.dataset.value;
-card.classList.add("flipped");
-
 // Start the first game automatically
 setupGame();
