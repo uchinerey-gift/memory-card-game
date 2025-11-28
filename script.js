@@ -71,9 +71,7 @@ function setupGame() {
     shuffleArray(cards);            // shuffle them
 
     // update moves on the page
-    if (movesDisplay) {
-        movesDisplay.textContent = moves;
-    }
+    updateMovesDisplay();
 
     // clear the board and add cards
     if (gameBoard) {
@@ -113,10 +111,26 @@ function handleCardClick(card) {
     // if we already had a first card, this must be the second
     secondCard = card;
 
+    // increase moves because we just completed a pair selection
+    moves = moves + 1; // could also use moves++
+    updateMovesDisplay();
+
     // for now, just log the pair we picked
-    console.log("First card:", firstCard.dataset.value, "Second card:", secondCard.dataset.value);
+    console.log(
+        "First card:", firstCard.dataset.value,
+        "Second card:", secondCard.dataset.value,
+        "Total moves:", moves
+    );
 
     // (match checking will come in the next commit)
 }
 // Start the first game automatically
 setupGame();
+
+// Update the moves display on the page
+function updateMovesDisplay() {
+    if (movesDisplay) {
+        movesDisplay.textContent = moves;
+    }
+}
+
