@@ -26,9 +26,13 @@ body {
     transition: background-color 0.2s, font-weight 0.2s;
 }
 
-/* Card hover effect */
+.card {
+    transition: background-color 0.3s ease;
+}
+
+/* Softer hover */
 .card:hover {
-    background-color: #f0f0f0;
+    background-color: #e8f4ff;
 }
 
 /* Flipped card style */
