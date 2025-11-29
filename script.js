@@ -62,8 +62,7 @@ const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
 const newGameButton = document.getElementById("new-game");
 
-
-// Game state variables
+//* Game state variables
 let cards = [];        // array of card values used in the current game
 let firstCard = null;  // first flipped card
 let secondCard = null; // second flipped card
@@ -111,6 +110,43 @@ function updateMovesDisplay() {
     }
 }
 
+// Update the timer display on the page
+function updateTimerDisplay(seconds) {
+    if (timerDisplay) {
+        timerDisplay.textContent = seconds;
+    }
+}
+
+// Start the game timer
+function startTimer() {
+    // create a Date object starting at time 0
+    startTime = new Date(0);
+
+    // set it to the current time
+    startTime.setTime(Date.now());
+
+    // clear any old timer
+    if (timerId !== null) {
+        clearInterval(timerId);
+    }
+
+    // update the timer every second
+    timerId = setInterval(function () {
+        const now = new Date();
+        const difference = now - startTime; // in milliseconds
+        const seconds = Math.floor(difference / 1000);
+        updateTimerDisplay(seconds);
+    }, 1000);
+}
+
+// Stop the game timer
+function stopTimer() {
+    if (timerId !== null) {
+        clearInterval(timerId);
+        timerId = null;
+    }
+}
+
 // Check if the two selected cards match
 function checkForMatch() {
     if (!firstCard || !secondCard) {
@@ -139,8 +175,6 @@ function checkForMatch() {
         }
 
     } else {
-    // ... (rest of your not-a-match code)
-
         console.log("Not a match!");
 
         // Lock the board so the user can't click
@@ -231,53 +265,18 @@ function setupGame() {
     console.log("Shuffled cards:", cards);
 }
 
-// 🔹 Restart the game when the New Game button is clicked
+// Restart the game when the New Game button is clicked
 if (newGameButton) {
     newGameButton.addEventListener("click", function () {
         setupGame();
     });
 }
 
-// 🔹 Start the first game automatically
+// Start the first game automatically
 setupGame();
 
 
-// Update the timer display on the page
-function updateTimerDisplay(seconds) {
-    if (timerDisplay) {
-        timerDisplay.textContent = seconds;
-    }
-}
 
-// Start the game timer
-function startTimer() {
-    // create a Date object starting at time 0
-    startTime = new Date(0);
-
-    // set it to the current time
-    startTime.setTime(Date.now());
-
-    // clear any old timer
-    if (timerId !== null) {
-        clearInterval(timerId);
-    }
-
-    // update the timer every second
-    timerId = setInterval(function () {
-        const now = new Date();
-        const difference = now - startTime; // in milliseconds
-        const seconds = Math.floor(difference / 1000);
-        updateTimerDisplay(seconds);
-    }, 1000);
-}
-
-// Stop the game timer
-function stopTimer() {
-    if (timerId !== null) {
-        clearInterval(timerId);
-        timerId = null;
-    }
-}
 
 
 
