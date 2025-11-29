@@ -83,7 +83,17 @@ function checkForMatch() {
         firstCard = null;
         secondCard = null;
 
+        // Check if all pairs have been found
+        const totalPairs = baseCardValues.length / 2;
+        if (matchesFound === totalPairs) {
+            console.log("You found all the matches!");
+            stopTimer();
+            alert("You found all the matches!");
+        }
+
     } else {
+    // ... (rest of your not-a-match code)
+
         console.log("Not a match!");
 
         // Lock the board so the user can't click
