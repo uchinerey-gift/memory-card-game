@@ -239,8 +239,7 @@ function handleCardClick(card) {
 
 // Start or restart the game
 function setupGame() {
-    // reset game state
-    // reset game state
+    //* reset game state
     moves = 0;
     matchesFound = 0;
     firstCard = null;
