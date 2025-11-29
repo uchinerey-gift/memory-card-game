@@ -62,13 +62,14 @@ const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
 const newGameButton = document.getElementById("new-game");
 
-//* Game state variables
+// Game state variables
 let cards = [];        // array of card values used in the current game
 let firstCard = null;  // first flipped card
 let secondCard = null; // second flipped card
 let isBoardLocked = false;
 let moves = 0;
 let matchesFound = 0;
+let isGameOver = false;
 
 // Timer variables
 let startTime = null;  // will hold a Date object
@@ -166,11 +167,11 @@ function checkForMatch() {
         firstCard = null;
         secondCard = null;
 
-        // Check if all pairs have been found
         const totalPairs = baseCardValues.length / 2;
         if (matchesFound === totalPairs) {
             console.log("You found all the matches!");
             stopTimer();
+            isGameOver = true;
             alert("You found all the matches!");
         }
 
@@ -200,6 +201,11 @@ function checkForMatch() {
 
 // Handle when a card is clicked
 function handleCardClick(card) {
+    // if the game is already over, ignore clicks
+    if (isGameOver) {
+        return;
+    }
+
     // if the board is locked, ignore clicks
     if (isBoardLocked) {
         return;
@@ -220,25 +226,27 @@ function handleCardClick(card) {
         return;
     }
 
-    // if we already had a first card, this must be the second
+    // second card
     secondCard = card;
 
-    // increase moves because we just completed a pair selection
+    // increase moves
     moves = moves + 1;
     updateMovesDisplay();
 
-    // Now check if they match
+    // now check if they match
     checkForMatch();
 }
 
 // Start or restart the game
 function setupGame() {
     // reset game state
+    // reset game state
     moves = 0;
     matchesFound = 0;
     firstCard = null;
     secondCard = null;
     isBoardLocked = false;
+    isGameOver = false;
 
     // reset and start timer
     stopTimer();
