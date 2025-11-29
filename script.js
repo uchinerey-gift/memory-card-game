@@ -117,17 +117,8 @@ function handleCardClick(card) {
 
     // Now check if they match
     checkForMatch();
-
 }
-// Start the first game automatically
-setupGame();
 
-// Update the moves display on the page
-function updateMovesDisplay() {
-    if (movesDisplay) {
-        movesDisplay.textContent = moves;
-    }
-}
 // Check if the two selected cards match
 function checkForMatch() {
     if (!firstCard || !secondCard) {
@@ -146,11 +137,29 @@ function checkForMatch() {
         // Reset choices
         firstCard = null;
         secondCard = null;
-
-        // In the next step, we will check if the game is won
+        
     } else {
         console.log("Not a match!");
-        // We'll flip them back in the next commit
+
+        // Lock the board so the user can't click
+        isBoardLocked = true;
+
+        // Wait 1 second before flipping cards back
+        setTimeout(function () {
+            firstCard.textContent = "?";
+            firstCard.classList.remove("flipped");
+
+            secondCard.textContent = "?";
+            secondCard.classList.remove("flipped");
+
+            // Reset card choices
+            firstCard = null;
+            secondCard = null;
+
+            // Unlock the board
+            isBoardLocked = false;
+        }, 1000);
     }
 }
+
 
