@@ -66,3 +66,8 @@ Things I might add later:
 - Difficulty levels with more cards.
 - Extra styling and animations for the cards.
 
+---
+
+### Project Credit  
+The Memory Flip Game was created by **Chinerey “Chi Chi” Ukwu** during the **Techtonica Session 1 Web Development Course**.
+
