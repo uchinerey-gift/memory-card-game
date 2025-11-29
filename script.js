@@ -7,16 +7,13 @@
 // My JavaScript will include functions for setting up the game, handling clicks, checking matches,
 // updating the moves, and restarting the game.
 
+
+
 // ------------------------------------
 // Simple string practice for this project
-// (to satisfy project requirements)
 // ------------------------------------
 const playerName = "Chi Chi";
-
-// find the length of the string
 const playerNameLength = playerName.length;
-
-// get the first character of the string
 const firstLetterOfName = playerName[0];
 
 console.log("Player name:", playerName);
@@ -25,19 +22,46 @@ console.log("First letter of name:", firstLetterOfName);
 
 
 // ------------------------------------
-// Base card values (each pair appears twice)
-// KEEP THIS — DO NOT REMOVE IT
+// Simple array practice for this project
 // ------------------------------------
+let numberList = [1, 2, 3];
+
+let nestedGrid = [
+    ["A", "B"],
+    ["C", "D"]
+];
+
+// index into arrays
+const firstNumber = numberList[0];
+const topLeft = nestedGrid[0][0];
+
+// update array value by index
+numberList[1] = 99;
+
+// array methods: push/pop/shift/unshift
+numberList.push(4);
+numberList.pop();
+numberList.unshift(0);
+numberList.shift();
+
+console.log("First number:", firstNumber);
+console.log("Top-left nested value:", topLeft);
+console.log("Final numberList:", numberList);
+
+
+// ------------------------------------
+// REAL GAME CODE STARTS BELOW
+// ------------------------------------
+
+// Base card values (each pair appears twice)
 const baseCardValues = ["A", "A", "B", "B", "C", "C", "D", "D"];
 
-
-// ------------------------------------
 // Select main elements from the page
-// ------------------------------------
 const gameBoard = document.getElementById("game-board");
 const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
 const newGameButton = document.getElementById("new-game");
+
 
 // Game state variables
 let cards = [];        // array of card values used in the current game
