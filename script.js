@@ -57,33 +57,54 @@ function createCardElement(cardValue) {
     return card;
 }
 
-// Start or restart the game
-function setupGame() {
-    // reset game state
-    moves = 0;
-    matchesFound = 0;
-    firstCard = null;
-    secondCard = null;
-    isBoardLocked = false;
+// Update the moves display on the page
+function updateMovesDisplay() {
+    if (movesDisplay) {
+        movesDisplay.textContent = moves;
+    }
+}
 
-    // copy and shuffle card values
-    cards = baseCardValues.slice(); // make a copy of the base values
-    shuffleArray(cards);            // shuffle them
-
-    // update moves on the page
-    updateMovesDisplay();
-
-    // clear the board and add cards
-    if (gameBoard) {
-        gameBoard.innerHTML = "";
-
-        for (let i = 0; i < cards.length; i++) {
-            const cardElement = createCardElement(cards[i]);
-            gameBoard.appendChild(cardElement);
-        }
+// Check if the two selected cards match
+function checkForMatch() {
+    if (!firstCard || !secondCard) {
+        return;
     }
 
-    console.log("Shuffled cards:", cards);
+    const firstValue = firstCard.dataset.value;
+    const secondValue = secondCard.dataset.value;
+
+    if (firstValue === secondValue) {
+        console.log("It's a match!");
+
+        // Increase matches found
+        matchesFound = matchesFound + 1;
+
+        // Reset choices
+        firstCard = null;
+        secondCard = null;
+
+    } else {
+        console.log("Not a match!");
+
+        // Lock the board so the user can't click
+        isBoardLocked = true;
+
+        // Wait 1 second before flipping cards back
+        setTimeout(function () {
+            firstCard.textContent = "?";
+            firstCard.classList.remove("flipped");
+
+            secondCard.textContent = "?";
+            secondCard.classList.remove("flipped");
+
+            // Reset card choices
+            firstCard = null;
+            secondCard = null;
+
+            // Unlock the board
+            isBoardLocked = false;
+        }, 1000);
+    }
 }
 
 // Handle when a card is clicked
@@ -119,47 +140,37 @@ function handleCardClick(card) {
     checkForMatch();
 }
 
-// Check if the two selected cards match
-function checkForMatch() {
-    if (!firstCard || !secondCard) {
-        return;
+// Start or restart the game
+function setupGame() {
+    // reset game state
+    moves = 0;
+    matchesFound = 0;
+    firstCard = null;
+    secondCard = null;
+    isBoardLocked = false;
+
+    // copy and shuffle card values
+    cards = baseCardValues.slice(); // make a copy of the base values
+    shuffleArray(cards);            // shuffle them
+
+    // update moves on the page
+    updateMovesDisplay();
+
+    // clear the board and add cards
+    if (gameBoard) {
+        gameBoard.innerHTML = "";
+
+        for (let i = 0; i < cards.length; i++) {
+            const cardElement = createCardElement(cards[i]);
+            gameBoard.appendChild(cardElement);
+        }
     }
 
-    const firstValue = firstCard.dataset.value;
-    const secondValue = secondCard.dataset.value;
-
-    if (firstValue === secondValue) {
-        console.log("It's a match!");
-
-        // Increase matches found
-        matchesFound = matchesFound + 1;
-
-        // Reset choices
-        firstCard = null;
-        secondCard = null;
-        
-    } else {
-        console.log("Not a match!");
-
-        // Lock the board so the user can't click
-        isBoardLocked = true;
-
-        // Wait 1 second before flipping cards back
-        setTimeout(function () {
-            firstCard.textContent = "?";
-            firstCard.classList.remove("flipped");
-
-            secondCard.textContent = "?";
-            secondCard.classList.remove("flipped");
-
-            // Reset card choices
-            firstCard = null;
-            secondCard = null;
-
-            // Unlock the board
-            isBoardLocked = false;
-        }, 1000);
-    }
+    console.log("Shuffled cards:", cards);
 }
+
+// Start the first game automatically
+setupGame();
+
 
 
