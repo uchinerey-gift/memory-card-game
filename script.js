@@ -149,6 +149,11 @@ function setupGame() {
     secondCard = null;
     isBoardLocked = false;
 
+    // reset and start timer
+    stopTimer();
+    updateTimerDisplay(0);
+    startTimer();
+
     // copy and shuffle card values
     cards = baseCardValues.slice(); // make a copy of the base values
     shuffleArray(cards);            // shuffle them
@@ -171,6 +176,43 @@ function setupGame() {
 
 // Start the first game automatically
 setupGame();
+// Update the timer display on the page
+function updateTimerDisplay(seconds) {
+    if (timerDisplay) {
+        timerDisplay.textContent = seconds;
+    }
+}
+
+// Start the game timer
+function startTimer() {
+    // create a Date object starting at time 0
+    startTime = new Date(0);
+
+    // set it to the current time
+    startTime.setTime(Date.now());
+
+    // clear any old timer
+    if (timerId !== null) {
+        clearInterval(timerId);
+    }
+
+    // update the timer every second
+    timerId = setInterval(function () {
+        const now = new Date();
+        const difference = now - startTime; // in milliseconds
+        const seconds = Math.floor(difference / 1000);
+        updateTimerDisplay(seconds);
+    }, 1000);
+}
+
+// Stop the game timer
+function stopTimer() {
+    if (timerId !== null) {
+        clearInterval(timerId);
+        timerId = null;
+    }
+}
+
 
 
 
