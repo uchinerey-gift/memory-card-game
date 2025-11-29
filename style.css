@@ -16,14 +16,22 @@ body {
     width: 80px;
     height: 80px;
     border: 1px solid #333;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     user-select: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Card hover effect */
 .card:hover {
     background-color: #f0f0f0;
+}
+
+/* Flipped card style */
+.card.flipped {
+    background-color: #dceeff;
+    font-weight: bold;
 }
