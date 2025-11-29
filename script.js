@@ -7,10 +7,33 @@
 // My JavaScript will include functions for setting up the game, handling clicks, checking matches,
 // updating the moves, and restarting the game.
 
-// Base card values (each value appears twice to make a pair)
+// ------------------------------------
+// Simple string practice for this project
+// (to satisfy project requirements)
+// ------------------------------------
+const playerName = "Chi Chi";
+
+// find the length of the string
+const playerNameLength = playerName.length;
+
+// get the first character of the string
+const firstLetterOfName = playerName[0];
+
+console.log("Player name:", playerName);
+console.log("Name length:", playerNameLength);
+console.log("First letter of name:", firstLetterOfName);
+
+
+// ------------------------------------
+// Base card values (each pair appears twice)
+// KEEP THIS — DO NOT REMOVE IT
+// ------------------------------------
 const baseCardValues = ["A", "A", "B", "B", "C", "C", "D", "D"];
 
+
+// ------------------------------------
 // Select main elements from the page
+// ------------------------------------
 const gameBoard = document.getElementById("game-board");
 const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
