@@ -22,3 +22,8 @@ body {
     cursor: pointer;
     user-select: none;
 }
+
+/* Card hover effect */
+.card:hover {
+    background-color: #f0f0f0;
+}
