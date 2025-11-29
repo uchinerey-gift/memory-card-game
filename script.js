@@ -165,8 +165,8 @@ function setupGame() {
     startTimer();
 
     // copy and shuffle card values
-    cards = baseCardValues.slice(); // make a copy of the base values
-    shuffleArray(cards);            // shuffle them
+    cards = baseCardValues.slice();
+    shuffleArray(cards);
 
     // update moves on the page
     updateMovesDisplay();
@@ -184,8 +184,17 @@ function setupGame() {
     console.log("Shuffled cards:", cards);
 }
 
-// Start the first game automatically
+// 🔹 Restart the game when the New Game button is clicked
+if (newGameButton) {
+    newGameButton.addEventListener("click", function () {
+        setupGame();
+    });
+}
+
+// 🔹 Start the first game automatically
 setupGame();
+
+
 // Update the timer display on the page
 function updateTimerDisplay(seconds) {
     if (timerDisplay) {
