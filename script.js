@@ -112,17 +112,12 @@ function handleCardClick(card) {
     secondCard = card;
 
     // increase moves because we just completed a pair selection
-    moves = moves + 1; // could also use moves++
+    moves = moves + 1;
     updateMovesDisplay();
 
-    // for now, just log the pair we picked
-    console.log(
-        "First card:", firstCard.dataset.value,
-        "Second card:", secondCard.dataset.value,
-        "Total moves:", moves
-    );
+    // Now check if they match
+    checkForMatch();
 
-    // (match checking will come in the next commit)
 }
 // Start the first game automatically
 setupGame();
@@ -131,6 +126,31 @@ setupGame();
 function updateMovesDisplay() {
     if (movesDisplay) {
         movesDisplay.textContent = moves;
+    }
+}
+// Check if the two selected cards match
+function checkForMatch() {
+    if (!firstCard || !secondCard) {
+        return;
+    }
+
+    const firstValue = firstCard.dataset.value;
+    const secondValue = secondCard.dataset.value;
+
+    if (firstValue === secondValue) {
+        console.log("It's a match!");
+
+        // Increase matches found
+        matchesFound = matchesFound + 1;
+
+        // Reset choices
+        firstCard = null;
+        secondCard = null;
+
+        // In the next step, we will check if the game is won
+    } else {
+        console.log("Not a match!");
+        // We'll flip them back in the next commit
     }
 }
 
