@@ -173,6 +173,7 @@ function stopTimer() {
 
 // Check if the two selected cards match
 function checkForMatch() {
+    // if either card is missing, do nothing
     if (!firstCard || !secondCard) {
         return;
     }
@@ -180,16 +181,18 @@ function checkForMatch() {
     const firstValue = firstCard.dataset.value;
     const secondValue = secondCard.dataset.value;
 
+    // if the values are the same, it's a match
     if (firstValue === secondValue) {
         console.log("It's a match!");
 
-        // Increase matches found
+        // keep track of how many matches we found
         matchesFound = matchesFound + 1;
 
-        // Reset choices
+        // clear the selected cards
         firstCard = null;
         secondCard = null;
 
+        // check if the player has found all pairs
         const totalPairs = baseCardValues.length / 2;
         if (matchesFound === totalPairs) {
             console.log("You found all the matches!");
@@ -201,10 +204,10 @@ function checkForMatch() {
     } else {
         console.log("Not a match!");
 
-        // Lock the board so the user can't click
+        // lock the board while we flip the cards back
         isBoardLocked = true;
 
-        // Wait 1 second before flipping cards back
+        // wait a second, then hide both cards again
         setTimeout(function () {
             firstCard.textContent = "?";
             firstCard.classList.remove("flipped");
@@ -212,15 +215,16 @@ function checkForMatch() {
             secondCard.textContent = "?";
             secondCard.classList.remove("flipped");
 
-            // Reset card choices
+            // clear the selected cards
             firstCard = null;
             secondCard = null;
 
-            // Unlock the board
+            // unlock the board
             isBoardLocked = false;
         }, 1000);
     }
 }
+
 // ------------------------------------
 // CARD CLICK HANDLER
 // ------------------------------------
