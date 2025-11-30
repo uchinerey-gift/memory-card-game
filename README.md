@@ -68,6 +68,14 @@ Things I might add later:
 
 ---
 
+## Tech Stack
+
+This project uses:
+
+- **HTML** for the page structure
+- **CSS** for the basic layout and card styling
+- **JavaScript** for all of the game logic, event handling, and timer
+
 ### Project Credit  
 The Memory Flip Game was created by **Chinerey “Chi Chi” Ukwu** during the **Techtonica Session 1 Web Development Course**.
 
