@@ -163,9 +163,10 @@ function startTimer() {
 
 // Stop the game timer
 function stopTimer() {
+    // if a timer is running, stop it
     if (timerId !== null) {
         clearInterval(timerId);
-        timerId = null;
+        timerId = null;  // reset timerId so we know no timer is active
     }
 }
 
