@@ -89,15 +89,18 @@ let timerId = null;    // will hold the setInterval id
 
 // Shuffle an array by swapping random items
 function shuffleArray(array) {
+    // loop through each item in the array
     for (let i = 0; i < array.length; i++) {
+        // pick a random index from 0 to array.length - 1
         const randomIndex = Math.floor(Math.random() * array.length);
 
-        // swap values using a temporary variable
+        // swap the current item with the random one
         const temp = array[i];
         array[i] = array[randomIndex];
         array[randomIndex] = temp;
     }
 
+    // return the shuffled array
     return array;
 }
 
