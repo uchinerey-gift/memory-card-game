@@ -89,6 +89,13 @@ While building this Memory Flip Game, I practiced:
 - Organizing my code with functions and comments.
 - Using Git branches, commits, and pull requests to manage my work.
 
+---
+
+## Known Issues
+
+- When the player wins, the browser shows a default message header (for example, `127.0.0.1:5500 says`) above the alert text. This is normal browser behavior when using `alert()` in a local development environment.
+- The layout is kept simple on purpose so I could focus on practicing JavaScript and DOM logic for this project.
+
 ### Project Credit  
 The Memory Flip Game was created by **Chinerey “Chi Chi” Ukwu** during the **Techtonica Session 1 Web Development Course**.
 
