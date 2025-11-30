@@ -145,7 +145,7 @@ function startTimer() {
     // set it to the current time
     startTime.setTime(Date.now());
 
-    // clear any old timer
+    // clear any old timer that may be running
     if (timerId !== null) {
         clearInterval(timerId);
     }
@@ -153,8 +153,10 @@ function startTimer() {
     // update the timer every second
     timerId = setInterval(function () {
         const now = new Date();
-        const difference = now - startTime; // in milliseconds
+        const difference = now - startTime; // difference in milliseconds
         const seconds = Math.floor(difference / 1000);
+
+        // show the number of seconds passed on the page
         updateTimerDisplay(seconds);
     }, 1000);
 }
