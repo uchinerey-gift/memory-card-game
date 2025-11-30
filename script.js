@@ -225,12 +225,12 @@ function handleCardClick(card) {
         return;
     }
 
-    // if the board is locked, ignore clicks
+    // if the board is locked, ignore clicks while cards are flipping back
     if (isBoardLocked) {
         return;
     }
 
-    // if this card is already flipped, do nothing
+    // if this card is already flipped face up, do nothing
     if (card.classList.contains("flipped")) {
         return;
     }
@@ -239,22 +239,23 @@ function handleCardClick(card) {
     card.textContent = card.dataset.value;
     card.classList.add("flipped");
 
-    // if this is the first card chosen, store it and stop here
+    // if this is the first card chosen, remember it and stop here
     if (firstCard === null) {
         firstCard = card;
         return;
     }
 
-    // second card
+    // otherwise, this must be the second card
     secondCard = card;
 
-    // increase moves
+    // we completed one move (two cards chosen)
     moves = moves + 1;
     updateMovesDisplay();
 
-    // now check if they match
+    // now check if the two chosen cards match
     checkForMatch();
 }
+
 // ------------------------------------
 // GAME SETUP AND RESET
 // ------------------------------------
