@@ -1,3 +1,7 @@
+// ------------------------------------
+// REAL GAME CODE STARTS BELOW
+// ------------------------------------
+
 // Project Overview:
 // For this project I am building a simple Memory Card Game using HTML and JavaScript.
 // The goal is to flip two cards at a time and try to find all the matching pairs.
@@ -62,6 +66,10 @@ const movesDisplay = document.getElementById("moves");
 const timerDisplay = document.getElementById("timer");
 const newGameButton = document.getElementById("new-game");
 
+// ------------------------------------
+// GAME STATE VARIABLES
+// ------------------------------------
+
 // Game state variables
 let cards = [];        // array of card values used in the current game
 let firstCard = null;  // first flipped card
@@ -111,6 +119,10 @@ function updateMovesDisplay() {
     }
 }
 
+// ------------------------------------
+// TIMER FUNCTIONS
+// ------------------------------------
+
 // Update the timer display on the page
 function updateTimerDisplay(seconds) {
     if (timerDisplay) {
@@ -147,6 +159,10 @@ function stopTimer() {
         timerId = null;
     }
 }
+
+// ------------------------------------
+// MATCH CHECKING LOGIC
+// ------------------------------------
 
 // Check if the two selected cards match
 function checkForMatch() {
@@ -198,6 +214,9 @@ function checkForMatch() {
         }, 1000);
     }
 }
+// ------------------------------------
+// CARD CLICK HANDLER
+// ------------------------------------
 
 // Handle when a card is clicked
 function handleCardClick(card) {
@@ -236,6 +255,9 @@ function handleCardClick(card) {
     // now check if they match
     checkForMatch();
 }
+// ------------------------------------
+// GAME SETUP AND RESET
+// ------------------------------------
 
 // Start or restart the game
 function setupGame() {
