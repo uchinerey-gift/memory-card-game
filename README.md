@@ -76,6 +76,19 @@ This project uses:
 - **CSS** for the basic layout and card styling
 - **JavaScript** for all of the game logic, event handling, and timer
 
+---
+
+## What I Learned
+
+While building this Memory Flip Game, I practiced:
+
+- Planning a small game project before writing code.
+- Using JavaScript to update the DOM based on user clicks.
+- Working with arrays, loops, and random numbers.
+- Using `new Date()` and `setInterval()` to build a simple timer.
+- Organizing my code with functions and comments.
+- Using Git branches, commits, and pull requests to manage my work.
+
 ### Project Credit  
 The Memory Flip Game was created by **Chinerey “Chi Chi” Ukwu** during the **Techtonica Session 1 Web Development Course**.
 
