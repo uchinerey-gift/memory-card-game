@@ -83,6 +83,10 @@ let isGameOver = false;
 let startTime = null;  // will hold a Date object
 let timerId = null;    // will hold the setInterval id
 
+// ------------------------------------
+// SHUFFLE AND CARD CREATION
+// ------------------------------------
+
 // Shuffle an array by swapping random items
 function shuffleArray(array) {
     for (let i = 0; i < array.length; i++) {
