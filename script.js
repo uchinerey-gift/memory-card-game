@@ -104,6 +104,10 @@ function shuffleArray(array) {
     return array;
 }
 
+// ------------------------------------
+// CREATE CARD ELEMENT
+// ------------------------------------
+
 // Create a single card element for a given value
 function createCardElement(cardValue) {
     const card = document.createElement("div");
@@ -171,6 +175,47 @@ function stopTimer() {
 }
 
 // ------------------------------------
+// CARD CLICK HANDLER
+// ------------------------------------
+
+// Handle when a card is clicked
+function handleCardClick(card) {
+    // if the game is already over, ignore clicks
+    if (isGameOver) {
+        return;
+    }
+
+    // if the board is locked, ignore clicks while cards are flipping back
+    if (isBoardLocked) {
+        return;
+    }
+
+    // if this card is already flipped face up, do nothing
+    if (card.classList.contains("flipped")) {
+        return;
+    }
+
+    // flip the card: show its value and add the "flipped" class
+    card.textContent = card.dataset.value;
+    card.classList.add("flipped");
+
+    // if this is the first card chosen, remember it and stop here
+    if (firstCard === null) {
+        firstCard = card;
+        return;
+    }
+
+    // otherwise, this must be the second card
+    secondCard = card;
+
+    // we completed one move (two cards chosen)
+    moves = moves + 1;
+    updateMovesDisplay();
+
+    // now check if the two chosen cards match
+    checkForMatch();
+}
+// ------------------------------------
 // MATCH CHECKING LOGIC
 // ------------------------------------
 
@@ -226,48 +271,6 @@ function checkForMatch() {
             isBoardLocked = false;
         }, 1000);
     }
-}
-
-// ------------------------------------
-// CARD CLICK HANDLER
-// ------------------------------------
-
-// Handle when a card is clicked
-function handleCardClick(card) {
-    // if the game is already over, ignore clicks
-    if (isGameOver) {
-        return;
-    }
-
-    // if the board is locked, ignore clicks while cards are flipping back
-    if (isBoardLocked) {
-        return;
-    }
-
-    // if this card is already flipped face up, do nothing
-    if (card.classList.contains("flipped")) {
-        return;
-    }
-
-    // flip the card: show its value and add the "flipped" class
-    card.textContent = card.dataset.value;
-    card.classList.add("flipped");
-
-    // if this is the first card chosen, remember it and stop here
-    if (firstCard === null) {
-        firstCard = card;
-        return;
-    }
-
-    // otherwise, this must be the second card
-    secondCard = card;
-
-    // we completed one move (two cards chosen)
-    moves = moves + 1;
-    updateMovesDisplay();
-
-    // now check if the two chosen cards match
-    checkForMatch();
 }
 
 // ------------------------------------
